@@ -13,15 +13,9 @@ let IMPORTANT_MESSAGE = [
     'l', 'k', 'z', 'b', '?', 'j',
     'e', 'h', 0];
 
-let inspace = [];
-let outspace = [];
+let message = ['p', 'o', 'f', 'u', 'k', 'i', '_', 'm', 'e', 0];
 
-for (let i in (CHARTABLE - 1)) {
-    inspace[CHARTABLE[i]] = CHARTABLE[i];
-    outspace[CHARTABLE[i]] = CHARTABLE[i];
-}
-inspace["_"] = " ";
-outspace[" "] = "_";
+
 
 function encrypt(word, x) {
     let cypher = [];
@@ -30,7 +24,7 @@ function encrypt(word, x) {
         cypher[CHARTABLE[i]] = CHARTABLE[(x + i) % 26];
     }
     for (let i in word) {
-        encrypted_word.push(inspace[cypher[outspace[word[i]]]]);
+        encrypted_word.push(cypher[word[i]]);
     }
     return encrypted_word.join("");
 }
@@ -42,9 +36,16 @@ function decrypt(word, x) {
         cypher[CHARTABLE[(x + i) % 26]] = CHARTABLE[i];
     }
     for (let i in word) {
-        decrypted_word.push(inspace[cypher[outspace[word[i]]]]);
+        decrypted_word.push(cypher[word[i]]);
+    }
+    for (let i in decrypted_word) {
+        if (decrypted_word[i] == '_') {
+            decrypted_word[i] = ' ';
+        }
     }
     return decrypted_word.join("");
 }
 
-console.log(decrypt(IMPORTANT_MESSAGE, 22));
+
+
+console.log(encrypt(message, 3));

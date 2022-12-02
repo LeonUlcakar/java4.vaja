@@ -26,7 +26,8 @@ function encrypt(word, x) {
     for (let i in word) {
         encrypted_word.push(cypher[word[i]]);
     }
-    return encrypted_word.join("");
+    //return encrypted_word.join("");
+    return encrypted_word;
 }
 
 function decrypt(word, x) {
@@ -38,14 +39,17 @@ function decrypt(word, x) {
     for (let i in word) {
         decrypted_word.push(cypher[word[i]]);
     }
+    /*
     for (let i in decrypted_word) {
-        if (decrypted_word[i] == '_') {
+        if (decrypted_word[i] == '_') { 
             decrypted_word[i] = ' ';
         }
     }
-    return decrypted_word.join("");
+    */
+    //return decrypted_word.join("");
+    return decrypted_word;
 }
 
 
 
-console.log(encrypt(message, 3));
+console.log(decrypt(IMPORTANT_MESSAGE, 22));
